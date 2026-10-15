@@ -1,6 +1,6 @@
-# Refaktoring v Rustu
+# Refactoring in Rust
 
-Každý task má vlastní složku v `src/`, původní verzi `start` a výslednou verzi `final`.
+Each task has its own directory in `src/`, an initial version named `start`, and a final version named `final`.
 
 ```text
 src/
@@ -14,40 +14,40 @@ src/
     task_2_final.rs
 ```
 
-## Spuštění
+## Running the code
 
-Příkazy spouštěj z kořenové složky projektu.
+Run commands from the project root.
 
 ```sh
-# Původní verze (výchozí)
+# Initial version (default)
 cargo run -p task_1
 
-# Původní verze explicitně
+# Explicitly run the initial version
 cargo run -p task_1 --bin start
 
-# Výsledná verze
+# Final version
 cargo run -p task_1 --bin final
 
-# Kontrola všech tasků
+# Check all tasks
 cargo check --workspace
 ```
 
-Soubor `task_1_final.rs` obsahuje řešení úrovní 1–5: pojmenovaný datový model, oddělené počítání chyb a formátování reportu, vypůjčený vstup bez klonování názvů služeb a agregaci jedním průchodem pomocí `HashMap` s následným seřazením výsledků. Regresní testy pokrývají smluvené chování i větší vstup. Obě verze mají vlastní `fn main()`.
+The `task_1_final.rs` file implements Levels 1–5: a named data model, separate error counting and report formatting, borrowed input without cloning service names, and single-pass aggregation using a `HashMap`, followed by sorting the results. Regression tests cover the behavior contract and a larger input. Both versions have their own `fn main()`.
 
 ```sh
-# Testy a formátování
+# Tests and formatting
 cargo test --workspace
 cargo fmt --all --check
 
-# Clippy pro výslednou verzi (původní start má záměrné prohřešky)
+# Clippy for the final version (the initial version has intentional lint violations)
 cargo clippy -p task_1 --bin final -- -D warnings
 ```
 
-## Přidání dalšího tasku
+## Adding another task
 
-1. Vytvoř složku `src/task_2`.
-2. Přidej `task_2_start.rs` a `task_2_final.rs`, každý s vlastní `fn main()`.
-3. Přidej do této složky `Cargo.toml`:
+1. Create the `src/task_2` directory.
+2. Add `task_2_start.rs` and `task_2_final.rs`, each with its own `fn main()`.
+3. Add a `Cargo.toml` file to this directory:
 
 ```toml
 [package]
@@ -65,5 +65,5 @@ name = "final"
 path = "task_2_final.rs"
 ```
 
-Pak spusť `cargo run -p task_2` nebo `cargo run -p task_2 --bin final`.
-Kořenový `Cargo.toml` není potřeba upravovat: workspace automaticky zahrnuje složky `src/task_*` s vlastním `Cargo.toml`.
+Then run `cargo run -p task_2` or `cargo run -p task_2 --bin final`.
+The root `Cargo.toml` does not need to be updated: the workspace automatically includes `src/task_*` directories that have their own `Cargo.toml`.

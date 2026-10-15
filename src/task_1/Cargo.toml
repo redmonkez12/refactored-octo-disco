@@ -1,0 +1,13 @@
+[package]
+name = "task_1"
+version = "0.1.0"
+edition = "2024"
+default-run = "start"
+
+[[bin]]
+name = "start"
+path = "task_1_start.rs"
+
+[[bin]]
+name = "final"
+path = "task_1_final.rs"

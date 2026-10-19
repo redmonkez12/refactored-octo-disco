@@ -1,6 +1,16 @@
 # Refactoring in Rust
 
-Progressive refactoring exercises using only the Rust standard library. Each exercise has five levels covering readability, data modeling, ownership, and behavior-preserving changes, with regression tests in the final solution.
+I'm using this repository to get better at refactoring Rust code and explaining the decisions behind each change. I start with small, working backend examples and improve them step by step, using regression tests to preserve their behavior.
+
+## What I'm practicing
+
+- Reading unfamiliar code and identifying its behavior, edge cases, and validation rules before changing it.
+- Expressing domain concepts with named structs, enums, and typed errors.
+- Using ownership and borrowing deliberately, removing unnecessary clones while keeping APIs practical for callers.
+- Separating data processing and decisions from formatting and console output.
+- Choosing data structures based on ordering requirements, complexity, and allocation costs, and explaining their tradeoffs.
+
+The exercises follow five progressive levels, inspired by an interview-style refactoring session. My goal is to build the judgment to make small, verifiable improvements and defend them in a code review. Each exercise uses only the Rust standard library and keeps both the original implementation and the refactored solution for comparison.
 
 ## Exercises
 
